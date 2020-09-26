@@ -1,7 +1,6 @@
 import 'package:calendlio/utils/constants.dart';
 import 'package:calendlio/utils/user.dart';
 import 'package:calendlio/utils/strings.dart';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -62,6 +61,21 @@ class API {
   /**
    * Function to create a meeting for the user ( user being authenticated)
    */
+
+  static Future createMeeting(
+      String description, String startDateTime, String endDateTime) async {
+    var client = http.Client();
+    var response = await client.post(Strings.createMeetingUrl, headers: {
+      'Authorization': 'Token ${Constants.auth_token.getString("auth_token")}'
+    }, body: {
+      "description": description,
+      "start_datetime": startDateTime,
+      "end_datetime": endDateTime
+    });
+
+    print(response.statusCode);
+    print(response.body); 
+  }
 
   /**
    * Function to delete the meeting of the user 

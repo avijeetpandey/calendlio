@@ -1,3 +1,4 @@
+import 'package:calendlio/services/api.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -8,8 +9,12 @@ class CreateMeeting extends StatefulWidget {
   _CreateMeetingState createState() => _CreateMeetingState();
 }
 
+/**
+ * DateTime.now().toUtc().toIso8601String()
+ */
 class _CreateMeetingState extends State<CreateMeeting> {
-  DateTime selectedDate = DateTime.now();
+  DateTime startDate = DateTime.now();
+  DateTime endDate = DateTime.now();
 
   TextEditingController _descriptionController = TextEditingController();
 
@@ -32,19 +37,37 @@ class _CreateMeetingState extends State<CreateMeeting> {
         lastDate: DateTime(2100),
       );
 
-  void _showDateAndTime(BuildContext context) async {
-    final selectedTime = await _selectTime(context);
-    if (selectedTime == null) return;
-    final selectedDate = await _selectDate(context);
-    if (selectedTime == null) return;
+  void _showStartDateAndTime(BuildContext context) async {
+    final selectedStartTime = await _selectTime(context);
+    if (selectedStartTime == null) return;
+    final selectedStartDate = await _selectDate(context);
+    if (selectedStartTime == null) return;
 
     setState(() {
-      this.selectedDate = DateTime(
-        selectedDate.year,
-        selectedDate.month,
-        selectedDate.day,
-        selectedTime.hour,
-        selectedTime.minute,
+      this.startDate = DateTime(
+        selectedStartDate.year,
+        selectedStartDate.month,
+        selectedStartDate.day,
+        selectedStartTime.hour,
+        selectedStartTime.minute,
+      );
+    });
+  }
+
+    void _showEndDateAndTime(BuildContext context) async {
+    final selectedEndTime = await _selectTime(context);
+    if (selectedEndTime == null) return;
+
+    final selectedEndDate = await _selectDate(context);
+    if (selectedEndTime == null) return;
+
+    setState(() {
+      this.endDate = DateTime(
+        selectedEndDate.year,
+        selectedEndDate.month,
+        selectedEndDate.day,
+        selectedEndTime.hour,
+        selectedEndTime.minute,
       );
     });
   }
@@ -95,34 +118,34 @@ class _CreateMeetingState extends State<CreateMeeting> {
                 children: [
                   // Pick Date Button
                   SizedBox(
-                    width: 150.0,
+                    width: 160.0,
                     child: RaisedButton(
                         color: Colors.white,
                         textColor: Colors.purple,
                         child: Padding(
                           padding: EdgeInsets.all(12.0),
                           child: Text(
-                            'Pick Date',
+                            'Pick Start Date Time',
                             style: GoogleFonts.acme(fontSize: 18.0),
                           ),
                         ),
-                        onPressed: () => _selectDate(context)),
+                        onPressed: () => _showStartDateAndTime(context)),
                   ),
 
                   // Time Picker
                   SizedBox(
-                    width: 150.0,
+                    width: 160.0,
                     child: RaisedButton(
                         color: Colors.white,
                         textColor: Colors.purple,
                         child: Padding(
                           padding: EdgeInsets.all(12.0),
                           child: Text(
-                            'Pick Time',
+                            'Pick End Date Time',
                             style: GoogleFonts.acme(fontSize: 18.0),
                           ),
                         ),
-                        onPressed: () => _selectTime(context)),
+                        onPressed: () => _showEndDateAndTime(context)),
                   )
                 ],
               ),
@@ -144,7 +167,12 @@ class _CreateMeetingState extends State<CreateMeeting> {
                         style: GoogleFonts.acme(fontSize: 18.0),
                       ),
                     ),
-                    onPressed: () => {}),
+                    onPressed: () {
+                      API.createMeeting(
+                          _descriptionController.text,
+                          startDate.toUtc().toIso8601String(),
+                          endDate.toUtc().toIso8601String());
+                    }),
               )
             ],
           ),
