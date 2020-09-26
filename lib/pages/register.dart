@@ -160,7 +160,9 @@ class _RegisterState extends State<Register> {
                 ),
 
                 // Buttons For Login and Register Section
-                SizedBox(height: 10.0,),
+                SizedBox(
+                  height: 10.0,
+                ),
                 /** 
                  * Login Raised Button
                  */
@@ -206,7 +208,9 @@ class _RegisterState extends State<Register> {
                         style: GoogleFonts.acme(fontSize: 18.0),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(context, "/login");
+                    },
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(18.0),
                         side: BorderSide(color: Colors.purple)),

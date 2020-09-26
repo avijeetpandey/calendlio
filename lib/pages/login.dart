@@ -119,7 +119,9 @@ class _LoginState extends State<Login> {
                       style: GoogleFonts.acme(fontSize: 18.0),
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(context, "/register");
+                  },
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(18.0),
                       side: BorderSide(color: Colors.purple)),
