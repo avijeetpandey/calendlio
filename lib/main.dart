@@ -32,7 +32,7 @@ class Calendlio extends StatelessWidget {
         "/home" : (context) => HomePage()
       },
       home: Scaffold(
-        body: Login(),
+        body: Register(),
       ),
     );
   }

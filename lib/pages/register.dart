@@ -1,3 +1,5 @@
+import 'package:calendlio/services/api.dart';
+import 'package:calendlio/utils/user.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -87,6 +89,12 @@ class _RegisterState extends State<Register> {
                     child: TextFormField(
                       textInputAction: TextInputAction.next,
                       controller: _firstNameController,
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Enter something , field can\'t be empty';
+                        }
+                        return null;
+                      },
                       decoration: InputDecoration(
                           prefixIcon: Icon(Icons.account_circle),
                           suffixIcon: IconButton(
@@ -109,6 +117,12 @@ class _RegisterState extends State<Register> {
                     child: TextFormField(
                       textInputAction: TextInputAction.next,
                       controller: _lastNameController,
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Enter something , field can\'t be empty';
+                        }
+                        return null;
+                      },
                       decoration: InputDecoration(
                           prefixIcon: Icon(Icons.account_circle),
                           suffixIcon: IconButton(
@@ -131,6 +145,12 @@ class _RegisterState extends State<Register> {
                     child: TextFormField(
                       textInputAction: TextInputAction.next,
                       controller: _addressController,
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Enter something , field can\'t be empty';
+                        }
+                        return null;
+                      },
                       decoration: InputDecoration(
                           prefixIcon: Icon(Icons.map),
                           suffixIcon: IconButton(
@@ -151,8 +171,14 @@ class _RegisterState extends State<Register> {
                     padding: EdgeInsets.only(
                         left: 15.0, right: 15.0, top: 10.0, bottom: 10.0),
                     child: TextFormField(
-                      textInputAction: TextInputAction.next,
+                      textInputAction: TextInputAction.done,
                       controller: _phoneController,
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Enter something , field can\'t be empty';
+                        }
+                        return null;
+                      },
                       decoration: InputDecoration(
                           prefixIcon: Icon(Icons.mobile_screen_share),
                           suffixIcon: IconButton(
@@ -191,6 +217,17 @@ class _RegisterState extends State<Register> {
                         if (_registerKey.currentState.validate()) {
                           Scaffold.of(context).showSnackBar(
                               SnackBar(content: Text('User Registered')));
+
+                          User user = User(
+                              _emailController.text,
+                              _firstNameController.text,
+                              _lastNameController.text,
+                              _addressController.text,
+                              _phoneController.text);
+
+                            API.register(user);
+
+                            Navigator.pushReplacementNamed(context, "/home");
                         }
                       },
                       shape: RoundedRectangleBorder(
