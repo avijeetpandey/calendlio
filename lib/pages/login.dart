@@ -1,3 +1,4 @@
+import 'package:calendlio/services/api.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -40,6 +41,12 @@ class _LoginState extends State<Login> {
                   padding: EdgeInsets.only(
                       left: 15.0, right: 15.0, top: 10.0, bottom: 10.0),
                   child: TextFormField(
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return 'Field can\'t be empty';
+                      }
+                      return null;
+                    },
                     textInputAction: TextInputAction.next,
                     controller: _mobileController,
                     decoration: InputDecoration(
@@ -63,6 +70,12 @@ class _LoginState extends State<Login> {
                       left: 15.0, right: 15.0, top: 10.0, bottom: 10.0),
                   child: TextFormField(
                     textInputAction: TextInputAction.done,
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return 'Field can\'t be empty';
+                      }
+                      return null;
+                    },
                     controller: _otpController,
                     decoration: InputDecoration(
                         prefixIcon: Icon(Icons.mobile_screen_share),
@@ -100,8 +113,10 @@ class _LoginState extends State<Login> {
                     ),
                     onPressed: () {
                       if (_loginKey.currentState.validate()) {
+                        API.login(_mobileController.text, _otpController.text);
                         Scaffold.of(context).showSnackBar(
                             SnackBar(content: Text('Login Succesfull')));
+                        Navigator.pushReplacementNamed(context, "/home");
                       }
                     },
                     shape: RoundedRectangleBorder(

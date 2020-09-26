@@ -1,3 +1,4 @@
+import 'package:calendlio/pages/homepage.dart';
 import 'package:calendlio/utils/constants.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,8 @@ class Calendlio extends StatelessWidget {
       theme: ThemeData(primaryColor: Colors.purple),
       routes: {
         "/register": (context) => Register(),
-        "/login": (context) => Login()
+        "/login": (context) => Login(),
+        "/home" : (context) => HomePage()
       },
       home: Scaffold(
         body: Login(),

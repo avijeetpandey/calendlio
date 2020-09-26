@@ -6,4 +6,5 @@ class Strings {
       'https://calendlio.sarayulabs.com/api/bookings';
   static final getAllMeetingsUrl =
       'https://calendlio.sarayulabs.com/api/bookings';
+  static final demoAuth = 'eyJ0eXAiOiJKV1QiL';
 }
