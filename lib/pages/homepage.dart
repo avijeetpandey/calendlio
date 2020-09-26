@@ -8,11 +8,17 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  String details = '';
+  Future meetingDetails;
+
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    
+    var res = API.getAll();
+    setState(() {
+      meetingDetails = res;
+    });
+    print(meetingDetails.toString());
   }
 
   @override
@@ -26,14 +32,15 @@ class _HomePageState extends State<HomePage> {
         elevation: 0.0,
         centerTitle: true,
       ),
+      body: Text(details),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         backgroundColor: Colors.purple,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(18.0),
         ),
-        onPressed: () {
-          API.getAll();
+        onPressed: () async {
+          Navigator.pushNamed(context, "/create");
         },
       ),
     );

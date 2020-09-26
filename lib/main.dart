@@ -1,3 +1,4 @@
+import 'package:calendlio/pages/createMeetingPage.dart';
 import 'package:calendlio/pages/homepage.dart';
 import 'package:calendlio/utils/constants.dart';
 import 'package:flutter/foundation.dart';
@@ -29,10 +30,11 @@ class Calendlio extends StatelessWidget {
       routes: {
         "/register": (context) => Register(),
         "/login": (context) => Login(),
-        "/home" : (context) => HomePage()
+        "/home" : (context) => HomePage(),
+        "/create" : (context)=> CreateMeeting()
       },
       home: Scaffold(
-        body: Register(),
+        body: HomePage(),
       ),
     );
   }

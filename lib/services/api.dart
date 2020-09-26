@@ -1,7 +1,7 @@
 import 'package:calendlio/utils/constants.dart';
 import 'package:calendlio/utils/user.dart';
 import 'package:calendlio/utils/strings.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -45,13 +45,18 @@ class API {
    * Function to fetch the list of all available meetings
    */
 
-  static Future<void> getAll() async {
+  static Future getAll() async {
+    List meetingDetails;
+    Map data;
     var client = http.Client();
     var response = await client.get(Strings.getAllMeetingsUrl, headers: {
       'Authorization': 'Token ${Constants.auth_token.getString("auth_token")}'
     });
 
-    print(response.body);
+    data = json.decode(response.body);
+    meetingDetails = data["results"];
+
+    return meetingDetails;
   }
 
   /**
