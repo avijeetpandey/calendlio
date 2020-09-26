@@ -38,7 +38,7 @@ class Calendlio extends StatelessWidget {
           elevation: 0.0,
           centerTitle: true,
         ),
-        body: Register(),
+        body: Login(),
       ),
     );
   }
