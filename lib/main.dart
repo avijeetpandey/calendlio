@@ -30,14 +30,6 @@ class Calendlio extends StatelessWidget {
         "/login": (context) => Login()
       },
       home: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'Calendlio',
-            style: GoogleFonts.acme(fontSize: 25.0, letterSpacing: 1.01),
-          ),
-          elevation: 0.0,
-          centerTitle: true,
-        ),
         body: Login(),
       ),
     );
