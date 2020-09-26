@@ -114,8 +114,6 @@ class _LoginState extends State<Login> {
                     onPressed: () {
                       if (_loginKey.currentState.validate()) {
                         API.login(_mobileController.text, _otpController.text);
-                        Scaffold.of(context).showSnackBar(
-                            SnackBar(content: Text('Login Succesfull')));
                         Navigator.pushReplacementNamed(context, "/home");
                       }
                     },

@@ -23,6 +23,7 @@ class API {
 
     Constants.auth_token.setString("auth_token", decodedResponse["auth_token"]);
     print("Auth Token Saved");
+    print(Constants.auth_token.getString("auth_token"));
     return response.statusCode;
   }
 
@@ -33,9 +34,24 @@ class API {
     var client = http.Client();
     var response = await client.post(Strings.loginUrl, body: {
       "otp": "123456",
-      "phone_number": "+919899339966",
-      "auth_token": Strings.demoAuth
+      "phone_number": mobile,
+      "auth_token": Constants.auth_token.getString("auth_token")
     });
+
+    print(response.body);
+  }
+
+  /**
+   * Function to fetch the list of all available meetings
+   */
+
+  static Future<void> getAll() async {
+    var client = http.Client();
+    var response = await client.get(Strings.getAllMeetingsUrl, headers: {
+      'Authorization': 'Token ${Constants.auth_token.getString("auth_token")}'
+    });
+
+    print(response.body);
   }
 
   /**
