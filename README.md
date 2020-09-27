@@ -35,7 +35,8 @@ These steps will build and launch the project into your device / emulator
 <img src="screenshots/five.jpg" alt="app screen" height="400" />
 <img src="screenshots/six.jpg" alt="app screen" height="400" />
 <img src="screenshots/seven.jpg" alt="app screen" height="400" />
-<br> 
+
+**Meeting Board**<br>
 
 <img src="screenshots/eight.jpg" alt="app screen" height="400" />
 <img src="screenshots/nine.jpg" alt="app screen" height="400" />
