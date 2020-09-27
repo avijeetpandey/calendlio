@@ -1,14 +1,7 @@
 # Calendlio (Made with ❤ using Flutter ) :tada:
 A simple app made using flutter and dart to assist you manage / schedule your personal meetings hassle free .
 
-## Demo Account ( For Testing Purpose)
-Though you can register and login with new account always 
-```
-{
-    "phone_number" : "+917376869684"
-    "otp" : "12345" 
-}
-```
+
 
 ## How to setup and build project
 To build the project onto your local machine simply clone the repo and follow the instructions
@@ -40,3 +33,7 @@ These steps will build and launch the project into your device / emulator
 <img src="screenshots/five.jpg" alt="app screen" height="400" />
 <img src="screenshots/six.jpg" alt="app screen" height="400" />
 <img src="screenshots/seven.jpg" alt="app screen" height="400" />
+<br> 
+
+<img src="screenshots/eight.jpg" alt="app screen" height="400" />
+<img src="screenshots/nine.jpg" alt="app screen" height="400" />
