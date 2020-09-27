@@ -30,3 +30,13 @@ These steps will build and launch the project into your device / emulator
 - User can view the created meetings
 
 ### App UI ( Onboarding + Screens)
+**Onboarding Screens**<br>
+<img src="screenshots/one.jpg" alt="onboarding image" height="400" />
+<img src="screenshots/two.jpg" alt="onboarding image" height="400" />
+<img src="screenshots/three.jpg" alt="onboarding image" height="400" />
+
+**App Screens**<br>
+<img src="screenshots/four.jpg" alt="app screen" height="400" /> 
+<img src="screenshots/five.jpg" alt="app screen" height="400" />
+<img src="screenshots/six.jpg" alt="app screen" height="400" />
+<img src="screenshots/seven.jpg" alt="app screen" height="400" />
