@@ -40,8 +40,9 @@ class Onboarding extends StatelessWidget {
           Constants.prefs.setBool("isBoarded", true);
         },
         getStartedClicked: (value) {
-          Constants.prefs.setBool("isBoarded", true);
           Navigator.pushReplacementNamed(context, "/register");
+          Constants.prefs.setBool("isBoarded", true);
+
         },
       ),
     );

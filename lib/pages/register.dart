@@ -215,9 +215,6 @@ class _RegisterState extends State<Register> {
                       ),
                       onPressed: () {
                         if (_registerKey.currentState.validate()) {
-                          Scaffold.of(context).showSnackBar(
-                              SnackBar(content: Text('User Registered')));
-
                           User user = User(
                               _emailController.text,
                               _firstNameController.text,
