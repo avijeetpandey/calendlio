@@ -44,7 +44,7 @@ class API {
    * Function to fetch the list of all available meetings
    */
 
-  static Future getAll() async {
+  static Future<List<dynamic>> getAll() async {
     List meetingDetails;
     Map data;
     var client = http.Client();
@@ -52,10 +52,7 @@ class API {
       'Authorization': 'Token ${Constants.auth_token.getString("auth_token")}'
     });
 
-    data = json.decode(response.body);
-    meetingDetails = data["results"];
-
-    return meetingDetails;
+    return json.decode(response.body)["results"];
   }
 
   /**
@@ -74,11 +71,6 @@ class API {
     });
 
     print(response.statusCode);
-    print(response.body); 
+    print(response.body);
   }
-
-  /**
-   * Function to delete the meeting of the user 
-   */
-
 }

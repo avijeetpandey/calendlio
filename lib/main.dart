@@ -3,7 +3,7 @@ import 'package:calendlio/pages/homepage.dart';
 import 'package:calendlio/utils/constants.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:calendlio/pages/onboarding.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/services.dart';
 import 'package:calendlio/pages/register.dart';
@@ -30,11 +30,11 @@ class Calendlio extends StatelessWidget {
       routes: {
         "/register": (context) => Register(),
         "/login": (context) => Login(),
-        "/home" : (context) => HomePage(),
-        "/create" : (context)=> CreateMeeting()
+        "/home": (context) => HomePage(),
+        "/create": (context) => CreateMeeting()
       },
       home: Scaffold(
-        body: HomePage(),
+        body: Onboarding(),
       ),
     );
   }

@@ -54,7 +54,7 @@ class _CreateMeetingState extends State<CreateMeeting> {
     });
   }
 
-    void _showEndDateAndTime(BuildContext context) async {
+  void _showEndDateAndTime(BuildContext context) async {
     final selectedEndTime = await _selectTime(context);
     if (selectedEndTime == null) return;
 
@@ -172,6 +172,8 @@ class _CreateMeetingState extends State<CreateMeeting> {
                           _descriptionController.text,
                           startDate.toUtc().toIso8601String(),
                           endDate.toUtc().toIso8601String());
+
+                      Navigator.pop(context);
                     }),
               )
             ],
